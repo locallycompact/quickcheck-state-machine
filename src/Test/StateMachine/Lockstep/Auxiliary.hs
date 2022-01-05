@@ -58,7 +58,7 @@ class NTraversable (f :: (k -> Type) -> [k] -> Type) where
              -> (forall a. c a => Elem xs a -> g a -> m (h a))
              -> f g xs -> m (f h xs)
 
-ntraverse :: (NTraversable f, Applicative m, SListI xs)
+ntraverse :: (NTraversable f, Applicative m, SListI xs, Top a)
           => (forall a. Elem xs a -> g a -> m (h a))
           -> f g xs -> m (f h xs)
 ntraverse = nctraverse (Proxy @Top)
